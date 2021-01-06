@@ -1,0 +1,90 @@
+<ion-view title="Course Description" id="page9">
+    <ion-content padding="false" class=" manual-remove-top-padding has-header">
+        <div class="list card" id="courseOfCooking-card24">
+            <ion-item class="item-avatar item bar bar-header bar-stable" id="courseOfCooking-list-item27">
+                <h2>{{data.list.info[0].course_name}}</h2>
+				<p>{{data.list.info[0].course_description}}</p>
+            </ion-item>
+            <ion-item ng-click="hide_students()" class="item-icon-left item-icon-right  bar bar-header bar-positive" id="courseOfCooking-list-item38">
+                <b>Participants</b>
+                <i class="{{forms.icon}}"></i>
+            </ion-item>
+            <div ng-hide="forms.studentsdropdown">
+            <ion-item class="item calm" id="courseOfCooking-list-item43">
+                <h2>Total participants</h2>
+				<p>CONFIRMED: {{data.list.participants[0].CONFIRMED}}</p>
+				<p>DECLINED: {{data.list.participants[0].DECLINED}}</p>
+				<p>PENDING: {{data.list.participants[0].PENDING}}</p>
+            </ion-item>
+            </div>
+            <ion-item ng-click="gotocalendar()" class="item-icon-left item-icon-right  bar bar-header bar-positive" id="courseOfCooking-list-item39" /*ui-sref="menu.myCalendar2"*/>
+                <b>Calendar</b>
+                <i class="icon ion-android-arrow-dropright-circle"></i>
+            </ion-item>
+			<ion-item ng-click="show_hidevenue()" class="item-icon-left item-icon-right dark  bar bar-header bar-positive" id="courseOfCooking-list-item40">
+                <b>Venue</b>
+                <i class="{{forms.icon2}}"></i>
+            </ion-item>
+            <div ng-hide="forms.venuedropdown">
+				<ion-item class="item" id="courseOfCooking-list-item46">
+                    <h2>Venue: {{data.list.info[0].venue}}</h2>
+					<div overflow-scroll="true">
+					<iframe ng-src="{{trustSrcurl(googlemapsapi)}}" style="width: 100%;min-height: 200px;"></iframe>
+					</div>
+                </ion-item>
+			</div>
+            <ion-item ng-click="hide_content()" class="item-icon-left item-icon-right  bar bar-header bar-positive" id="courseOfCooking-list-item37">
+                <b>Content</b>
+                <i class="{{forms.icon3}}"></i>
+            </ion-item>
+            <div ng-hide="forms.contentdropdown">
+                <ion-item class="item" id="courseOfCooking-list-item46">
+                    <ion-item ng-click="openPretest()" class="item" id="courseOfCooking-list-item46">Pre-test</ion-item>
+                    <ion-item ng-click="openPDF()" ng-class="itempresentation_enabled" id="courseOfCooking-list-item">Presentation</ion-item>
+                    <ion-item ng-click="openCVS()" ng-class="itemcvs_enabled" id="courseOfCooking-list-item46">Worksheets</ion-item>
+                </ion-item>
+            </div>
+			<ion-item ng-click="toggleNotesContent()" class="item-icon-left item-icon-right  bar bar-header bar-positive" id="courseOfCooking2-list-item75">
+                <b>Notes</b>
+                <i class="{{forms.icon5}}"></i>
+            </ion-item>
+			<div ng-hide="forms.notescontent" style="text-align: right;">
+				<div class="list" style="text-align: left;">
+					<a ng-click="openOptions({{item.noteid}})" ng-repeat="item in noteslist" class="item item-icon-right" href="#">
+						<i class="icon ion-android-apps"></i>
+						<h2>{{item.title}}</h2>
+					  <p>{{item.text}}</p>
+					</a>
+				</div>
+				<i ng-click="addnewnote()" style="text-align: right;font-size: 50px;padding: 10px;color: #004ccc;" class="icon ion-plus-circled"></i>
+			</div>
+			<ion-item ng-click="openAttenance()" class="item-icon-left item-icon-right  bar bar-header bar-positive" id="courseOfCooking-list-item39" /*ui-sref="menu.myCalendar2"*/>
+                <b>Attendance</b>
+                <i class="{{forms.attclass}}"></i>
+            </ion-item>
+			<div ng-hide="forms.attclassopen">
+				<div class="attendanceday" ng-repeat="unit in units">
+				<div class="bar bar-stable">
+				  <h1 class="title">Attendance - Day {{unit.day}}</h1>
+				</div>
+				<br />
+				<br /><br />
+				<p style="padding-left:20px;font-weight: bold;font-style: italic;">Confirmed:{{unit.confirmed}}</p>
+				<p style="padding-left:20px;font-weight: bold;font-style: italic;">Attended:{{unit.attended}}</p>
+				<br />
+			</div>
+			</div>
+			<ion-item ng-click="togglefeedback()" class="item-icon-left item-icon-right  bar bar-header bar-positive" id="courseOfCooking-list-item39" >
+                <b>Feedback</b>
+                <i class="{{forms.feedbackclass}}"></i>
+            </ion-item>
+			<div ng-hide="forms.feedbackcontent">
+			<ion-item class="item" id="courseOfCooking-list-item46">
+                    <ion-item class="item" id="courseOfCooking-list-item46" style="font-weight: bold;text-align: center;">Feedback Survey</ion-item>
+                    <ion-item class="item" id="courseOfCooking-list-item46">Overall rating: {{ data.list.rating }}</ion-item>
+                </ion-item>
+			</div>
+        </div>
+
+    </ion-content>
+</ion-view>
